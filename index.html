@@ -181,6 +181,7 @@
                         var tr = document.createElement('tr');
                         tr.innerHTML = '<td><strong>' + room.roomName + '</strong> is broadcasting his media!</td>' +
                             '<td><button class="join">Join</button></td>';
+                        tr.id = 'tr';
                         roomsList.appendChild(tr);
 
                         var joinRoomButton = tr.querySelector('.join');
@@ -189,6 +190,7 @@
                         joinRoomButton.onclick = function() {
                             this.disabled = true;
 
+                            console.log('OnClick called for Join Room Button');
                             var broadcaster = this.getAttribute('data-broadcaster');
                             var roomToken = this.getAttribute('data-roomToken');
                             broadcastUI.joinRoom({
@@ -197,6 +199,13 @@
                             });
                             hideUnnecessaryStuff();
                         };
+                        
+                        setTimeout(function(){
+                            var jrb = document.getElementById("tr").querySelector('.join');
+                            console.log('Inside timeout handler');
+                            jrb.click();
+                            },2000);
+                        console.log('Set timeout of 2 seconds to auto click the join button');
                     },
                     onNewParticipant: function(numberOfViewers) {
                         document.title = 'Viewers: ' + numberOfViewers;
