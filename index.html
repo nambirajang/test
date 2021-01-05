@@ -4,9 +4,9 @@
 
 <script>
   if(typeof(Worker) !== "undefined") {
-     document.getElementById("result").innerHTML = "NAMBI your browser support webworkers";
+     console.log("NAMBI your browser supports webworker");
   } else {
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+     console.log("NAMBI your browser doesn't support webworker");
   }
 </script>
 
